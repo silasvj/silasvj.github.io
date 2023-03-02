@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+    body {
+        margin: 0;
+    }
+
+    @keyframes mymove {
+        0% {
+            left: -400px;
+            opacity: 0;
+        }
+
+        100% {
+            left: -8px;
+            opacity: 1;
+        }
+    }
+
+    #title_card {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    #subtitle_card {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 32px;
+        font-weight: 300;
+        font-style: italic;
+        color: #0ff;
+        margin-top: -8px;
+    }
+
+    #img {
+        position: absolute;
+        width: 800px;
+        top: 200px;
+        clip-path: inset(180px 0px 160px 0px round 0px 60px 60px 0px);
+        animation: mymove;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #bg_card2 {
+        position: absolute;
+        top: 380px;
+        margin: 0 0;
+        padding: 8px 60px 8px 80px;
+
+        animation: mymove;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+    }
+    </style>
+    <script>
+    window.addEventListener('load', () => {
+        fetch('text1.txt')
+            .then(response => response.text())
+            .then(text1 => {
+                const text1Container = document.getElementById('title_card');
+                text1Container.innerText = text1;
+            });
+
+        fetch('text2.txt')
+            .then(response => response.text())
+            .then(text2 => {
+                const text2Container = document.getElementById('subtitle_card');
+                text2Container.innerText = text2;
+            });
+    });
+
+    function save(){
+var text_to_save=document.getElementById('textfield').value;
+localStorage.setItem("text", text_to_save); // save the item
+}
+
+function retrieve(){
+var text=localStorage.getItem("text"); // retrieve
+document.getElementById('textDiv').innerHTML = text; // display
+}
+    </script>
+</head>
+
+<body>
+    <img id="img" src="img.png"></img>
+    <div id="bg_card2">
+        <div id="title_card"></div>
+        <div id="subtitle_card"></div>
+    </div>
+
+    <input name="searchTxt" type="text" maxlength="512" id="searchTxt" class="searchField" placeholder="a"/>
+    <div id="result"></div>
+
+    <script>
+
+        var input = document.getElementById("searchTxt");
+
+        function searchURL() {
+            window.location = "http://www.myurl.com/search/" + input.value;
+        }
+
+        // Check browser support
+        if (typeof(Storage) !== "undefined") {
+        // Store
+        localStorage.setItem("lastname", "Smith");
+        // Retrieve
+        document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+        } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+    </script>
+</body>
+
+</html>
