@@ -63,7 +63,7 @@
     </style>
     <script>
     window.addEventListener('load', () => {
-        fetch('https://drive.google.com/uc?export=download&id=1JSSteGy7fwe7sKEAZMoe5EnfeaQSAVpA')
+        fetch('text1.txt')
             .then(response => response.text())
             .then(text1 => {
                 const text1Container = document.getElementById('title_card');
@@ -121,6 +121,13 @@ document.getElementById('textDiv').innerHTML = text; // display
         document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
         }
     </script>
+
+<?php
+$myfile = fopen("text1.txt", "r") or die("Unable to open file!");
+echo fgets($myfile);
+fclose($myfile);
+?>
+
 </body>
 
 </html>
