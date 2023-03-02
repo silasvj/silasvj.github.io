@@ -123,6 +123,10 @@ document.getElementById('textDiv').innerHTML = text; // display
     </script>
 
 <?php
+echo "My first PHP script!";
+?>
+
+<?php
 $myfile = fopen("text1.txt", "r") or die("Unable to open file!");
 echo fgets($myfile);
 fclose($myfile);
