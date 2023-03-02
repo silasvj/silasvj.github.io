@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
     <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,300;1,500;1,700&display=swap');
+    
     body {
         margin: 0;
     }
@@ -92,7 +94,7 @@ document.getElementById('textDiv').innerHTML = text; // display
 
 <body>
 
-    <div><a href="a.html">Outra página</a></div>
+    <div><a href="index.php">Outra página</a></div>
 
     <img id="img" src="img.png"></img>
     <div id="bg_card2">
@@ -122,15 +124,6 @@ document.getElementById('textDiv').innerHTML = text; // display
         }
     </script>
 
-<?php
-echo "My first PHP script!";
-?>
-
-<?php
-$myfile = fopen("text1.txt", "r") or die("Unable to open file!");
-echo fgets($myfile);
-fclose($myfile);
-?>
 
 </body>
 
