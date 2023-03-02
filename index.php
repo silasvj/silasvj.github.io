@@ -1,56 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Store form data in .txt file</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
 
-  <style>
-
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,300;1,500;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,300;1,500;1,700&display=swap');
     
+    body {
+        margin: 0;
+    }
 
-  .title{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 48px;
-    font-weight: 700;
-    color: #0ff;
-  }
-  </style>
+    @keyframes mymove {
+        0% {
+            left: -400px;
+            opacity: 0;
+        }
+
+        100% {
+            left: -8px;
+            opacity: 1;
+        }
+    }
+
+    #title_card {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    #subtitle_card {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 32px;
+        font-weight: 300;
+        font-style: italic;
+        color: #0ff;
+        margin-top: -8px;
+    }
+
+    #img {
+        position: absolute;
+        width: 800px;
+        top: 200px;
+        clip-path: inset(180px 0px 160px 0px round 0px 60px 60px 0px);
+        animation: mymove;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+    }
+
+    #bg_card2 {
+        position: absolute;
+        top: 380px;
+        margin: 0 0;
+        padding: 8px 60px 8px 80px;
+
+        animation: mymove;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+    }
+    </style>
 
 </head>
+
 <body>
 
-  <?php
-    $msc1_nome = file("msc1.txt")[0];
-    $msc1_autor = file("msc1.txt")[1];
-  ?>
+    <?php
+        $msc1_nome = file("msc1.txt")[0];
+        $msc1_autor = file("msc1.txt")[1];
+    ?>
 
-  <?php
-    if (isset($_POST['msc1_nome'])) {
-      if (isset($_POST['msc1_autor'])) {
-        $msc1_nome=$_POST['msc1_nome'];
-        $msc1_autor=$_POST['msc1_autor'];
 
-        unlink('msc1.txt');
-        $fp3 = fopen('msc1.txt', 'a+');
-        fwrite($fp3, $msc1_nome."\n".$msc1_autor);
-        fclose($fp3);
-
-      }
-    }
-  ?>
-
-  <form method="post">
-    Música 1:<br>
-    <input type="text" name="msc1_nome" value="<?php echo $msc1_nome; ?>"><br>
-    <input type="text" name="msc1_autor" value="<?php echo $msc1_autor; ?>"><br>
-    <input type="submit" name="submit"><br>
-  </form>
-
-  <?php
-    echo '<div class="title">'.$msc1_nome.'</div>';
-    echo '<div class="title">'.$msc1_autor.'</div>';
-  ?>
+    <img id="img" src="img.png"></img>
+    <div id="bg_card2">
+        <div id="title_card"><?php echo $msc1_nome; ?></div>
+        <div id="subtitle_card"><?php echo $msc1_autor; ?></div>
+    </div>
 
 </body>
-</html>
 
+</html>
