@@ -20,8 +20,8 @@
 <body>
 
   <?php
-    $msc1_nome = file("msc1.txt")[0];
-    $msc1_autor = file("msc1.txt")[1];
+    $msc1_nome = file("data/msc1.txt")[0];
+    $msc1_autor = file("data/msc1.txt")[1];
   ?>
 
   <?php
@@ -31,7 +31,7 @@
         $msc1_autor=$_POST['msc1_autor'];
 
         unlink('msc1.txt');
-        $fp3 = fopen('msc1.txt', 'a+');
+        $fp3 = fopen('data/msc1.txt', 'a+');
         fwrite($fp3, $msc1_nome."\n".$msc1_autor);
         fclose($fp3);
 
